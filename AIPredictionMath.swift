@@ -25,7 +25,7 @@ func getConfidenceAccuracyCellData(prices: [Double], predictedPrices: [Double]) 
                 }
             }
             else if price < prices[i+1] && confidence >= 0.5 {
-                successes+=1
+                successesAt50+=1
                 if confidence >= 0.6 {
                   successesAt60+=1
                 }
@@ -45,11 +45,9 @@ func getConfidenceAccuracyCellData(prices: [Double], predictedPrices: [Double]) 
         }
     }
     
-    if total > 0 {
-        accuracyAt50Percent = Double(round(1000*successesAt50/totalAt50)/10)
-        accuracyAt60Percent = Double(round(1000*successesAt60/totalAt60)/10)
-        accuracyAt65Percent = Double(round(1000*successesAt65/totalAt65)/10)
-    }
+    accuracyAt50Percent = Double(round(1000*successesAt50/totalAt50)/10)
+    accuracyAt60Percent = Double(round(1000*successesAt60/totalAt60)/10)
+    accuracyAt65Percent = Double(round(1000*successesAt65/totalAt65)/10)
     
     return (accuracyAt50Percent, accuracyAt60Percent, accuracyAt65Percent)
 }
