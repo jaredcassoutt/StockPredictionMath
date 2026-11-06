@@ -1,3 +1,5 @@
+import Foundation
+
 func getConfidenceAccuracyCellData(prices: [Double], predictedPrices: [Double]) -> (Double, Double, Double) {
 
     var successesAt50 = 0.0
@@ -13,7 +15,7 @@ func getConfidenceAccuracyCellData(prices: [Double], predictedPrices: [Double]) 
     var accuracyAt65Percent: Double = 0.0
     
     for (i,price) in prices.enumerated() {
-        if prices.get(index: i+1) != nil {
+        if i+1 < prices.count {
             let confidence = 0.5*predictedPrices[i]/price
             if price > prices[i+1] && confidence <= 0.5 {
                 successesAt50+=1
